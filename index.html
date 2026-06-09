@@ -87,10 +87,14 @@
     }
 
     .section-menu-toggle {
+        position: fixed;
+        top: 14px;
+        right: 18px;
+        z-index: 40;
+        display: inline-flex;
         width: 46px;
         height: 46px;
         flex: 0 0 46px;
-        display: inline-flex;
         align-items: center;
         justify-content: center;
         border: 1px solid rgba(11, 43, 76, .14);
@@ -121,39 +125,6 @@
         background: currentColor
     }
 
-    .section-menu-panel {
-        position: absolute;
-        top: calc(100% + 12px);
-        left: 0;
-        width: min(280px, calc(100vw - 36px));
-        padding: 8px;
-        border: 1px solid rgba(11, 43, 76, .12);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, .97);
-        box-shadow: 0 20px 46px rgba(12, 38, 70, .16);
-        backdrop-filter: blur(18px)
-    }
-
-    .section-menu-panel[hidden] {
-        display:none
-    }
-
-    .section-menu-panel a {
-        display: flex;
-        min-height: 42px;
-        align-items: center;
-        padding: 0 12px;
-        border-radius: 7px;
-        color: var(--navy);
-        font-size: .94rem;
-        font-weight: 850
-    }
-
-    .section-menu-panel a:hover, .section-menu-panel a.is-active {
-        background: #eef5ff;
-        color: var(--blue)
-    }
-
     .brand {
         display: flex;
         width:min(245px, 48vw)
@@ -175,7 +146,8 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap:16px
+        gap:16px;
+        margin-left: auto
     }
 
     .nav-links {
@@ -531,28 +503,29 @@
 
     .program {
         min-height: 198px;
-        padding:22px
+        overflow: hidden
     }
 
-    .program .icon {
-        width: 42px;
-        height: 42px;
-        margin-bottom:24px
+    .program-media {
+        width: 100%;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        background: #e9f3ff
     }
 
-    .program:nth-child(2n) .icon {
-        background: #e8f8f1;
-        color:var(--green)
+    .program-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:transform .28s var(--ease)
     }
 
-    .program:nth-child(3n) .icon {
-        background: #fff5dd;
-        color:#b67505
+    .program:hover .program-media img {
+        transform:scale(1.04)
     }
 
-    .program:nth-child(4n) .icon {
-        background: #ffeceb;
-        color: var(--red)
+    .program-content {
+        padding:20px 20px 22px
     }
 
     .image-stack {
@@ -1202,36 +1175,36 @@
 
         .nav-start {
             flex: 1 1 auto;
-            gap:10px
+            gap:10px;
+            padding-right: 58px
         }
 
         .nav-actions {
             width: 100%;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap:10px
+            display: none;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            padding: 4px 0 8px
+        }
+
+        .nav-actions.is-open {
+            display:flex
         }
 
         .nav-links {
-            order: 2;
             display: flex;
             width: 100%;
-            flex-wrap: nowrap;
+            flex-direction: column;
             gap: 8px;
             justify-content: flex-start;
-            overflow-x: auto;
-            padding: 2px 0 6px;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch
-        }
-
-        .nav-links::-webkit-scrollbar {
-            display:none
+            overflow: visible;
+            padding: 0
         }
 
         .nav-links a, .nav-links button {
             min-height: 38px;
-            flex: 0 0 auto;
+            width: 100%;
             padding: 0 12px;
             border-radius: 8px;
             background: #f4f7fb;
@@ -1239,12 +1212,17 @@
             color: var(--navy);
             box-shadow: none;
             font-size: .86rem;
-            white-space: nowrap
+            white-space: nowrap;
+            justify-content: flex-start
         }
 
         .nav-links .btn-primary {
             background: var(--red);
             color:#fff
+        }
+
+        .language-switch {
+            width: fit-content
         }
 
         .hero .wrap, .section-head, .about-grid, .split, .cta-panel, .contact-location, .footer-grid {
@@ -1276,11 +1254,9 @@
         .section-menu-toggle {
             width: 42px;
             height: 42px;
-            flex-basis:42px
-        }
-
-        .section-menu-panel {
-            top: calc(100% + 10px)
+            flex-basis:42px;
+            top: 12px;
+            right: 14px
         }
 
         .hero {
@@ -1362,30 +1338,23 @@
 </head>
 <body>
     <div class="scroll-progress" aria-hidden="true"></div>
+    <button class="section-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="primary-navigation" aria-expanded="false">
+        <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
     <header>
         <nav class="nav" aria-label="Navegación principal">
             <div class="wrap">
                 <div class="nav-start">
-                    <button class="section-menu-toggle" type="button" aria-label="Abrir secciones" aria-controls="section-menu" aria-expanded="false">
-                        <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-                    </button>
-                    <div class="section-menu-panel" id="section-menu" hidden>
-                        <a href="#inicio" data-menu-index="0">Inicio</a>
-                        <a href="#quienes-somos" data-menu-index="1">Quiénes somos</a>
-                        <a href="#programas" data-menu-index="2">Programas</a>
-                        <a href="#metodologia" data-menu-index="3">Metodología</a>
-                        <a href="#certificaciones" data-menu-index="4">Certificaciones</a>
-                        <a href="#testimonios" data-menu-index="5">Testimonios</a>
-                        <a href="#contacto" data-menu-index="6">Contacto</a>
-                    </div>
                     <a class="brand" href="#inicio" aria-label="Enquality Languages">
                         <img class="brand-logo" src="assets/enquality-logo-modern-cropped.png" alt="Enquality Languages"/>
                     </a>
                 </div>
-                <div class="nav-actions">
+                <div class="nav-actions" id="primary-navigation">
                     <div class="nav-links">
+                        <a href="#inicio">Inicio</a>
                         <a href="#quienes-somos">Quiénes somos</a>
                         <a href="#programas">Programas</a>
+                        <a href="#metodologia">Metodología</a>
                         <a href="#certificaciones">Certificaciones</a>
                         <a href="#testimonios">Testimonios</a>
                         <a href="#contacto" class="btn btn-secondary">Contacto</a>
@@ -1485,44 +1454,76 @@
                 </div>
                 <div class="program-grid">
                     <article class="program">
-                        <div class="icon">01</div>
-                        <h3>Regulares</h3>
-                        <p>Aprendizaje progresivo para construir vocabulario, gramática, escucha y conversación desde tu nivel actual.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_53_21%20AM.png" alt="Programa de inglés regular"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>Regulares</h3>
+                            <p>Aprendizaje progresivo para construir vocabulario, gramática, escucha y conversación desde tu nivel actual.</p>
+                        </div>
                     </article>
                     <article class="program">
-                        <div class="icon">02</div>
-                        <h3>Preparaciones</h3>
-                        <p>Entrenamiento orientado a exámenes, entrevistas, viajes, universidad o metas profesionales específicas.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_53_45%20AM.png" alt="Programa de preparación en inglés"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>Preparaciones</h3>
+                            <p>Entrenamiento orientado a exámenes, entrevistas, viajes, universidad o metas profesionales específicas.</p>
+                        </div>
                     </article>
                     <article class="program">
-                        <div class="icon">03</div>
-                        <h3>Certificaciones</h3>
-                        <p>Ruta por niveles MCER para validar tus competencias y demostrar tu progreso con claridad.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_53_59%20AM.png" alt="Programa de certificaciones de inglés"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>Certificaciones</h3>
+                            <p>Ruta por niveles MCER para validar tus competencias y demostrar tu progreso con claridad.</p>
+                        </div>
                     </article>
                     <article class="program">
-                        <div class="icon">04</div>
-                        <h3>Empresas</h3>
-                        <p>Capacitación para equipos con enfoque laboral, reuniones, presentaciones, servicio al cliente y comunicación interna.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_56_37%20AM.png" alt="Programa de inglés para empresas"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>Empresas</h3>
+                            <p>Capacitación para equipos con enfoque laboral, reuniones, presentaciones, servicio al cliente y comunicación interna.</p>
+                        </div>
                     </article>
                     <article class="program">
-                        <div class="icon">05</div>
-                        <h3>Conversacionales</h3>
-                        <p>Clases prácticas para pensar en inglés, responder con seguridad y mejorar pronunciación.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2012_04_22%20PM.png" alt="Programa de inglés conversacional"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>Conversacionales</h3>
+                            <p>Clases prácticas para pensar en inglés, responder con seguridad y mejorar pronunciación.</p>
+                        </div>
                     </article>
                     <article class="program">
-                        <div class="icon">06</div>
-                        <h3>Nivelaciones</h3>
-                        <p>Refuerzo académico para estudiantes que necesitan ponerse al día y sostener mejores resultados.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2012_03_28%20PM.png" alt="Programa de nivelación de inglés"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>Nivelaciones</h3>
+                            <p>Refuerzo académico para estudiantes que necesitan ponerse al día y sostener mejores resultados.</p>
+                        </div>
                     </article>
                     <article class="program">
-                        <div class="icon">07</div>
-                        <h3>Supletorios</h3>
-                        <p>Apoyo intensivo para evaluaciones, recuperaciones y temas puntuales con acompañamiento cercano.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2012_03_33%20PM.png" alt="Programa de apoyo para supletorios"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>Supletorios</h3>
+                            <p>Apoyo intensivo para evaluaciones, recuperaciones y temas puntuales con acompañamiento cercano.</p>
+                        </div>
                     </article>
                     <article class="program">
-                        <div class="icon">08</div>
-                        <h3>One to one</h3>
-                        <p>Sesiones individuales con ritmo, horario y objetivos adaptados a tu vida diaria.</p>
+                        <div class="program-media">
+                            <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2012_04_15%20PM.png" alt="Programa de inglés one to one"/>
+                        </div>
+                        <div class="program-content">
+                            <h3>One to one</h3>
+                            <p>Sesiones individuales con ritmo, horario y objetivos adaptados a tu vida diaria.</p>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -1728,9 +1729,8 @@
             title: "Enquality Languages | Academia de Inglés en Quito",
             description: "Academia de inglés en Quito con programas personalizados, certificaciones, preparación para exámenes, cursos empresariales y clases one-to-one.",
             whatsappMessage: "Hola! Necesito más información sobre su academia.",
-            nav: ["Quiénes somos", "Programas", "Certificaciones", "Testimonios", "Contacto", "Clase demo gratis"],
-            sectionMenu: ["Inicio", "Quiénes somos", "Programas", "Metodología", "Certificaciones", "Testimonios", "Contacto"],
-            sectionMenuButton: ["Abrir secciones", "Cerrar secciones"],
+            nav: ["Inicio", "Quiénes somos", "Programas", "Metodología", "Certificaciones", "Testimonios", "Contacto", "Clase demo gratis"],
+            sectionMenuButton: ["Abrir navegación", "Cerrar navegación"],
             heroEyebrow: "Academia de inglés en Quito · 23 años de experiencia",
             heroTitle: "Domina inglés con una ruta clara.",
             heroCopy: "Enquality Languages prepara estudiantes, profesionales y empresas con programas de inglés personalizados, docentes calificados, certificaciones por nivel y clases enfocadas en comunicación real.",
@@ -1778,9 +1778,8 @@
             title: "Enquality Languages | English Academy in Quito",
             description: "English academy in Quito with personalized programs, certifications, exam preparation, corporate training, and one-to-one classes.",
             whatsappMessage: "Hi! I need more information about your academy.",
-            nav: ["Who we are", "Programs", "Certifications", "Testimonials", "Contact", "Free demo class"],
-            sectionMenu: ["Home", "Who we are", "Programs", "Method", "Certifications", "Testimonials", "Contact"],
-            sectionMenuButton: ["Open sections", "Close sections"],
+            nav: ["Home", "Who we are", "Programs", "Method", "Certifications", "Testimonials", "Contact", "Free demo class"],
+            sectionMenuButton: ["Open navigation", "Close navigation"],
             heroEyebrow: "English academy in Quito · 23 years of experience",
             heroTitle: "Master English with a clear path.",
             heroCopy: "Enquality Languages prepares students, professionals, and companies with personalized English programs, qualified teachers, level certifications, and classes focused on real communication.",
@@ -1851,7 +1850,6 @@
         document.querySelector('.proof-row').setAttribute('aria-label', t.aria.certProof);
         document.querySelector('.whatsapp-float').setAttribute('aria-label', t.aria.whatsapp);
         setTextAll('.nav-links a,.nav-links button', t.nav);
-        setTextAll('.section-menu-panel a', t.sectionMenu);
         document.querySelector('.section-menu-toggle').setAttribute('aria-label', document.querySelector('.section-menu-toggle').getAttribute('aria-expanded') === 'true' ? t.sectionMenuButton[1] : t.sectionMenuButton[0]);
         setText('.eyebrow', t.heroEyebrow);
         setText('.hero h1', t.heroTitle);
@@ -1937,9 +1935,20 @@
     document.querySelectorAll('.language-switch button').forEach(b => b.addEventListener('click', () => applyLanguage(b.dataset.lang)));
     const nav = document.querySelector('.nav'),
         progress = document.querySelector('.scroll-progress'),
+        sectionMenuToggle = document.querySelector('.section-menu-toggle'),
+        navActions = document.querySelector('.nav-actions'),
         navAnchors = [...document.querySelectorAll('.nav-links a[href^="#"]')],
         sections = [...document.querySelectorAll('main section[id]')];
     let ticking = false;
+    const mobileNavMedia = matchMedia('(max-width: 980px)');
+    function setSectionMenu(open) {
+        const isOpen = mobileNavMedia.matches && open;
+        navActions.classList.toggle('is-open', isOpen);
+        sectionMenuToggle.setAttribute('aria-expanded', String(isOpen));
+        const lang = document.documentElement.lang || 'es',
+            labels = copy[lang]?.sectionMenuButton || copy.es.sectionMenuButton;
+        sectionMenuToggle.setAttribute('aria-label', isOpen ? labels[1] : labels[0])
+    }
     function updateActiveSection() {
         let active = sections[0]?.id;
         const anchorLine = scrollY + innerHeight * .34;
@@ -1969,6 +1978,19 @@
     });
     addEventListener('resize', requestNavMotion, {
         passive: true
+    });
+    mobileNavMedia.addEventListener('change', () => setSectionMenu(false));
+    sectionMenuToggle.addEventListener('click', () => setSectionMenu(!navActions.classList.contains('is-open')));
+    navAnchors.forEach(link => link.addEventListener('click', () => setSectionMenu(false)));
+    document.addEventListener('click', e => {
+        if (navActions.classList.contains('is-open') && !e.target.closest('.nav') && !e.target.closest('.section-menu-toggle'))
+            setSectionMenu(false)
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && navActions.classList.contains('is-open')) {
+            setSectionMenu(false);
+            sectionMenuToggle.focus()
+        }
     });
     const revealItems = [...document.querySelectorAll('.section-head,.about-copy,.about-point,.program,.image-stack,.feature,.cert,.proof,.testimonial,.cta-panel,footer')];
     revealItems.forEach((el, i) => {
