@@ -71,10 +71,12 @@
     }
 
     .nav .wrap {
+        position: relative;
         min-height: 74px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-right: 72px;
         gap:28px
     }
 
@@ -87,10 +89,10 @@
     }
 
     .section-menu-toggle {
-        position: fixed;
-        top: 14px;
-        right: 18px;
-        z-index: 40;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        z-index: 30;
         display: inline-flex;
         width: 46px;
         height: 46px;
@@ -103,13 +105,19 @@
         color: var(--navy);
         cursor: pointer;
         box-shadow: 0 10px 24px rgba(12, 38, 70, .08);
+        transform: translateY(-50%);
         transition: transform .18s var(--ease), border-color .18s ease, box-shadow .18s ease
     }
 
     .section-menu-toggle:hover {
-        transform: translateY(-1px);
+        transform: translateY(calc(-50% - 1px));
         border-color: rgba(18, 104, 214, .32);
         box-shadow: 0 14px 30px rgba(12, 38, 70, .12)
+    }
+
+    .section-menu-toggle[aria-expanded=true] {
+        border-color: rgba(18, 104, 214, .24);
+        box-shadow: 0 14px 30px rgba(18, 104, 214, .16)
     }
 
     .hamburger-icon {
@@ -143,18 +151,34 @@
     }
 
     .nav-actions {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 0;
+        z-index: 25;
+        display: none;
+        width: min(320px, calc(100vw - 36px));
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(11, 43, 76, .1);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, .96);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 26px 64px rgba(12, 38, 70, .14)
+    }
+
+    .nav-actions.is-open {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap:16px;
-        margin-left: auto
+        animation: modalIn .22s var(--ease) both
     }
 
     .nav-links {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 18px;
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: flex-start;
         font-size: .94rem;
         font-weight: 800;
         color:#30445e
@@ -164,29 +188,37 @@
         position:relative
     }
 
-    .nav-links a:not(.btn)::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -7px;
-        height: 2px;
-        background: var(--blue);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition:transform .22s var(--ease)
+    .nav-links a, .nav-links button {
+        min-height: 40px;
+        width: 100%;
+        padding: 0 12px;
+        border-radius: 10px;
+        background: #f6f9fc;
+        border: 1px solid rgba(11, 43, 76, .1);
+        color: var(--navy);
+        box-shadow: none;
+        font-size: .86rem;
+        white-space: nowrap;
+        justify-content: flex-start
     }
 
-    .nav-links a:hover::after {
-        transform:scaleX(1)
+    .nav-links a:not(.btn)::after {
+        display:none
+    }
+
+    .nav-links a:hover, .nav-links button:hover {
+        border-color: rgba(18, 104, 214, .24);
+        background:#edf4ff
     }
 
     .language-switch {
         display: inline-grid;
         grid-template-columns: 1fr 1fr;
+        align-self: flex-end;
+        margin-top: 2px;
         padding: 4px;
         border: 1px solid rgba(11, 43, 76, .14);
-        border-radius: 8px;
+        border-radius: 10px;
         background:#f4f7fb
     }
 
@@ -941,11 +973,9 @@
     }
 
     .nav-links a.is-active:not(.btn) {
-        color:var(--blue)
-    }
-
-    .nav-links a.is-active:not(.btn)::after {
-        transform:scaleX(1)
+        color: var(--blue);
+        background: #edf4ff;
+        border-color: rgba(18, 104, 214, .26)
     }
 
     .nav-links a.btn.is-active {
@@ -1169,6 +1199,7 @@
         .nav .wrap {
             min-height: auto;
             padding: 10px 0;
+            padding-right: 58px;
             flex-wrap: wrap;
             gap:10px
         }
@@ -1180,40 +1211,9 @@
         }
 
         .nav-actions {
-            width: 100%;
-            display: none;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 12px;
-            padding: 4px 0 8px
-        }
-
-        .nav-actions.is-open {
-            display:flex
-        }
-
-        .nav-links {
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            gap: 8px;
-            justify-content: flex-start;
-            overflow: visible;
-            padding: 0
-        }
-
-        .nav-links a, .nav-links button {
-            min-height: 38px;
-            width: 100%;
-            padding: 0 12px;
-            border-radius: 8px;
-            background: #f4f7fb;
-            border: 1px solid rgba(11, 43, 76, .1);
-            color: var(--navy);
-            box-shadow: none;
-            font-size: .86rem;
-            white-space: nowrap;
-            justify-content: flex-start
+            left: 0;
+            right: 0;
+            width: auto
         }
 
         .nav-links .btn-primary {
@@ -1255,8 +1255,7 @@
             width: 42px;
             height: 42px;
             flex-basis:42px;
-            top: 12px;
-            right: 14px
+            right: 0
         }
 
         .hero {
@@ -1338,9 +1337,6 @@
 </head>
 <body>
     <div class="scroll-progress" aria-hidden="true"></div>
-    <button class="section-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="primary-navigation" aria-expanded="false">
-        <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
     <header>
         <nav class="nav" aria-label="Navegación principal">
             <div class="wrap">
@@ -1349,6 +1345,9 @@
                         <img class="brand-logo" src="assets/enquality-logo-modern-cropped.png" alt="Enquality Languages"/>
                     </a>
                 </div>
+                <button class="section-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="primary-navigation" aria-expanded="false">
+                    <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
                 <div class="nav-actions" id="primary-navigation">
                     <div class="nav-links">
                         <a href="#inicio">Inicio</a>
@@ -1942,7 +1941,7 @@
     let ticking = false;
     const mobileNavMedia = matchMedia('(max-width: 980px)');
     function setSectionMenu(open) {
-        const isOpen = mobileNavMedia.matches && open;
+        const isOpen = Boolean(open);
         navActions.classList.toggle('is-open', isOpen);
         sectionMenuToggle.setAttribute('aria-expanded', String(isOpen));
         const lang = document.documentElement.lang || 'es',
