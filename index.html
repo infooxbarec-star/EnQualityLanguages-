@@ -76,7 +76,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-right: 72px;
         gap:28px
     }
 
@@ -93,7 +92,7 @@
         top: 50%;
         right: 0;
         z-index: 30;
-        display: inline-flex;
+        display: none;
         width: 46px;
         height: 46px;
         flex: 0 0 46px;
@@ -151,34 +150,22 @@
     }
 
     .nav-actions {
-        position: absolute;
-        top: calc(100% + 12px);
-        right: 0;
-        z-index: 25;
-        display: none;
-        width: min(320px, calc(100vw - 36px));
-        flex-direction: column;
-        align-items: stretch;
+        display: flex;
+        align-items: center;
+        gap: 16px;
         gap: 10px;
-        padding: 14px;
-        border: 1px solid rgba(11, 43, 76, .1);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, .96);
-        backdrop-filter: blur(18px);
-        box-shadow: 0 26px 64px rgba(12, 38, 70, .14)
+        margin-left: auto
     }
 
     .nav-actions.is-open {
-        display: flex;
-        animation: modalIn .22s var(--ease) both
+        display: flex
     }
 
     .nav-links {
         display: flex;
-        width: 100%;
-        flex-direction: column;
+        align-items: center;
         gap: 8px;
-        justify-content: flex-start;
+        justify-content: flex-end;
         font-size: .94rem;
         font-weight: 800;
         color:#30445e
@@ -189,33 +176,62 @@
     }
 
     .nav-links a, .nav-links button {
-        min-height: 40px;
-        width: 100%;
-        padding: 0 12px;
+        min-height: 44px;
+        width: auto;
+        padding: 0 10px;
         border-radius: 10px;
-        background: #f6f9fc;
-        border: 1px solid rgba(11, 43, 76, .1);
+        background: transparent;
+        border: 1px solid transparent;
         color: var(--navy);
         box-shadow: none;
         font-size: .86rem;
         white-space: nowrap;
-        justify-content: flex-start
+        justify-content: center
     }
 
     .nav-links a:not(.btn)::after {
-        display:none
+        content: "";
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 6px;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform .2s ease
+    }
+
+    .nav-links a:not(.btn):hover::after,
+    .nav-links a.is-active:not(.btn)::after {
+        transform: scaleX(1)
     }
 
     .nav-links a:hover, .nav-links button:hover {
-        border-color: rgba(18, 104, 214, .24);
+        border-color: rgba(18, 104, 214, .12);
         background:#edf4ff
+    }
+
+    .nav-links a:not(.btn), .nav-links button:not(.btn) {
+        min-height: auto;
+        padding: 10px;
+        border-radius: 999px
+    }
+
+    .nav-links a:not(.btn):hover {
+        background: rgba(237, 244, 255, .8)
+    }
+
+    .nav-links .btn {
+        min-height: 46px;
+        padding: 0 18px
     }
 
     .language-switch {
         display: inline-grid;
         grid-template-columns: 1fr 1fr;
-        align-self: flex-end;
-        margin-top: 2px;
+        align-self: center;
         padding: 4px;
         border: 1px solid rgba(11, 43, 76, .14);
         border-radius: 10px;
@@ -974,8 +990,8 @@
 
     .nav-links a.is-active:not(.btn) {
         color: var(--blue);
-        background: #edf4ff;
-        border-color: rgba(18, 104, 214, .26)
+        background: rgba(237, 244, 255, .92);
+        border-color: rgba(18, 104, 214, .18)
     }
 
     .nav-links a.btn.is-active {
@@ -1211,9 +1227,52 @@
         }
 
         .nav-actions {
+            position: absolute;
+            top: calc(100% + 12px);
             left: 0;
             right: 0;
-            width: auto
+            z-index: 25;
+            display: none;
+            width: auto;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 14px;
+            border: 1px solid rgba(11, 43, 76, .1);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 26px 64px rgba(12, 38, 70, .14)
+        }
+
+        .nav-actions.is-open {
+            display: flex;
+            animation: modalIn .22s var(--ease) both
+        }
+
+        .nav-links {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start
+        }
+
+        .nav-links a, .nav-links button {
+            min-height: 40px;
+            width: 100%;
+            padding: 0 12px;
+            background: #f6f9fc;
+            border: 1px solid rgba(11, 43, 76, .1);
+            justify-content: flex-start
+        }
+
+        .nav-links a:not(.btn), .nav-links button:not(.btn) {
+            min-height: 40px;
+            padding: 0 12px;
+            border-radius: 10px
+        }
+
+        .nav-links a:not(.btn)::after {
+            display:none
         }
 
         .nav-links .btn-primary {
@@ -1222,7 +1281,13 @@
         }
 
         .language-switch {
+            align-self: flex-end;
+            margin-top: 2px;
             width: fit-content
+        }
+
+        .section-menu-toggle {
+            display: inline-flex
         }
 
         .hero .wrap, .section-head, .about-grid, .split, .cta-panel, .contact-location, .footer-grid {
