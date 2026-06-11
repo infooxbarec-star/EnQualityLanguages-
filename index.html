@@ -87,60 +87,6 @@
         min-width: 0
     }
 
-    .section-menu-toggle {
-        display: inline-flex;
-        flex-shrink: 0;
-        width: 46px;
-        height: 46px;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid rgba(11, 43, 76, .14);
-        border-radius: 8px;
-        background: #fff;
-        color: var(--navy);
-        cursor: pointer;
-        transition: transform .18s var(--ease), border-color .18s ease, box-shadow .18s ease
-    }
-
-    .section-menu-toggle:hover {
-        transform: translateY(-1px);
-        border-color: rgba(18, 104, 214, .32);
-        box-shadow: 0 14px 30px rgba(12, 38, 70, .12)
-    }
-
-    .section-menu-toggle[aria-expanded=true] {
-        border-color: rgba(18, 104, 214, .24);
-        box-shadow: 0 14px 30px rgba(18, 104, 214, .16)
-    }
-
-    .hamburger-icon {
-        width: 20px;
-        display: grid;
-        gap: 4px
-    }
-
-    .hamburger-icon span {
-        display: block;
-        height: 2px;
-        border-radius: 999px;
-        background: currentColor;
-        transform-origin: center;
-        transition: transform .28s var(--ease), opacity .2s ease
-    }
-
-    .section-menu-toggle[aria-expanded=true] .hamburger-icon span:nth-child(1) {
-        transform: translateY(6px) rotate(45deg)
-    }
-
-    .section-menu-toggle[aria-expanded=true] .hamburger-icon span:nth-child(2) {
-        opacity: 0;
-        transform: scaleX(0)
-    }
-
-    .section-menu-toggle[aria-expanded=true] .hamburger-icon span:nth-child(3) {
-        transform: translateY(-6px) rotate(-45deg)
-    }
-
     .brand {
         display: flex;
         width:min(245px, 48vw)
@@ -161,13 +107,10 @@
     .nav-actions {
         display: flex;
         align-items: center;
-        gap: 16px;
         gap: 10px;
-        margin-left: auto
-    }
-
-    .nav-actions.is-open {
-        display: flex
+        margin-left: auto;
+        flex-wrap: wrap;
+        justify-content: flex-end
     }
 
     .nav-links {
@@ -1236,144 +1179,6 @@
         }
     }
 
-    /* Nav overlay backdrop */
-    .nav-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 15;
-        background: rgba(7, 30, 54, .3);
-        backdrop-filter: blur(3px);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .3s ease
-    }
-
-    .nav-overlay.is-visible {
-        opacity: 1;
-        pointer-events: auto
-    }
-
-    /* Drawer header – desktop only */
-    .nav-drawer-header {
-        display: none
-    }
-
-    .nav-drawer-close {
-        display: none
-    }
-
-    @media (min-width: 981px) {
-        .nav-drawer-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-shrink: 0;
-            padding: 20px 22px 18px;
-            border-bottom: 1px solid rgba(217, 226, 236, .7)
-        }
-
-        .nav-drawer-title {
-            font-size: .72rem;
-            font-weight: 900;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            color: var(--muted)
-        }
-
-        .nav-drawer-close {
-            display: inline-flex;
-            width: 36px;
-            height: 36px;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: #fff;
-            color: var(--navy);
-            font-size: 1.15rem;
-            line-height: 1;
-            cursor: pointer;
-            transition: transform .16s var(--ease), border-color .16s, box-shadow .16s
-        }
-
-        .nav-drawer-close:hover {
-            transform: translateY(-1px);
-            border-color: rgba(18, 104, 214, .24);
-            box-shadow: 0 8px 20px rgba(12, 38, 70, .1)
-        }
-
-        .nav-actions {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 200;
-            width: 295px;
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            border: 0;
-            border-left: 1px solid rgba(217, 226, 236, .8);
-            border-radius: 0;
-            background: rgba(255, 255, 255, .97);
-            backdrop-filter: blur(20px);
-            box-shadow: -22px 0 64px rgba(12, 38, 70, .14);
-            transform: translateX(110%);
-            transition: transform .38s var(--ease), box-shadow .38s;
-            overflow-y: auto;
-            animation: none
-        }
-
-        .nav-actions.is-open {
-            transform: translateX(0);
-            display: flex;
-            animation: none;
-            box-shadow: -28px 0 80px rgba(12, 38, 70, .18)
-        }
-
-        .nav-links {
-            flex: 1;
-            flex-direction: column;
-            align-items: stretch;
-            width: 100%;
-            padding: 10px 14px;
-            gap: 4px;
-            justify-content: flex-start
-        }
-
-        .nav-links a, .nav-links button {
-            min-height: 52px;
-            width: 100%;
-            padding: 0 16px;
-            border-radius: 10px;
-            font-size: .96rem;
-            justify-content: flex-start;
-            text-align: left
-        }
-
-        .nav-links a:not(.btn), .nav-links button:not(.btn) {
-            min-height: 52px;
-            padding: 0 16px;
-            border-radius: 10px
-        }
-
-        .nav-links a:not(.btn)::after {
-            display: none
-        }
-
-        .nav-links .btn {
-            justify-content: center;
-            margin-top: 6px
-        }
-
-        .language-switch {
-            flex-shrink: 0;
-            margin: 6px 14px 24px;
-            align-self: flex-end;
-            width: fit-content
-        }
-    }
-
     @media (max-width: 980px) {
         section {
             scroll-margin-top:128px
@@ -1387,47 +1192,33 @@
         }
 
         .nav-start {
-            flex: 1 1 auto;
-            gap: 10px
+            flex: 1 1 100%;
+            gap: 10px;
+            justify-content: center
         }
 
         .nav-actions {
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 0;
-            right: 0;
-            z-index: 25;
-            display: none;
-            width: auto;
+            display: flex;
+            width: 100%;
             flex-direction: column;
             align-items: stretch;
-            padding: 14px;
-            border: 1px solid rgba(11, 43, 76, .1);
-            border-radius: 18px;
-            background: rgba(255, 255, 255, .96);
-            backdrop-filter: blur(18px);
-            box-shadow: 0 26px 64px rgba(12, 38, 70, .14)
-        }
-
-        .nav-actions.is-open {
-            display: flex;
-            animation: modalIn .22s var(--ease) both
+            margin-left: 0;
+            gap: 12px
         }
 
         .nav-links {
             width: 100%;
-            flex-direction: column;
-            align-items: stretch;
-            justify-content: flex-start
+            justify-content: center;
+            flex-wrap: wrap
         }
 
         .nav-links a, .nav-links button {
             min-height: 40px;
-            width: 100%;
+            width: auto;
             padding: 0 12px;
             background: #f6f9fc;
             border: 1px solid rgba(11, 43, 76, .1);
-            justify-content: flex-start
+            justify-content: center
         }
 
         .nav-links a:not(.btn), .nav-links button:not(.btn) {
@@ -1446,7 +1237,7 @@
         }
 
         .language-switch {
-            align-self: flex-end;
+            align-self: center;
             margin-top: 2px;
             width: fit-content
         }
@@ -1564,14 +1355,7 @@
                         <img class="brand-logo" src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/enquality-logo-modern-cropped.png" alt="Enquality Languages"/>
                     </a>
                 </div>
-                <button class="section-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="primary-navigation" aria-expanded="false">
-                    <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-                </button>
                 <div class="nav-actions" id="primary-navigation">
-                    <div class="nav-drawer-header">
-                        <span class="nav-drawer-title">Navegación</span>
-                        <button class="nav-drawer-close" type="button" aria-label="Cerrar menú">×</button>
-                    </div>
                     <div class="nav-links">
                         <a href="#inicio">Inicio</a>
                         <a href="#quienes-somos">Quiénes somos</a>
@@ -1590,7 +1374,6 @@
             </div>
         </nav>
     </header>
-    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
     <main>
         <section id="inicio" class="hero" aria-label="Enquality Languages academia de inglés en Quito">
             <div class="wrap">
@@ -2073,11 +1856,6 @@
         document.querySelector('.proof-row').setAttribute('aria-label', t.aria.certProof);
         document.querySelector('.whatsapp-float').setAttribute('aria-label', t.aria.whatsapp);
         setTextAll('.nav-links a,.nav-links button', t.nav);
-        document.querySelector('.section-menu-toggle').setAttribute('aria-label', document.querySelector('.section-menu-toggle').getAttribute('aria-expanded') === 'true' ? t.sectionMenuButton[1] : t.sectionMenuButton[0]);
-        const drawerTitleEl = document.querySelector('.nav-drawer-title');
-        if (drawerTitleEl) drawerTitleEl.textContent = t.lang === 'es' ? 'Navegación' : 'Navigation';
-        const drawerCloseEl = document.querySelector('.nav-drawer-close');
-        if (drawerCloseEl) drawerCloseEl.setAttribute('aria-label', t.lang === 'es' ? 'Cerrar menú' : 'Close menu');
         setText('.eyebrow', t.heroEyebrow);
         setText('.hero h1', t.heroTitle);
         setText('.hero-copy', t.heroCopy);
@@ -2162,29 +1940,9 @@
     document.querySelectorAll('.language-switch button').forEach(b => b.addEventListener('click', () => applyLanguage(b.dataset.lang)));
     const nav = document.querySelector('.nav'),
         progress = document.querySelector('.scroll-progress'),
-        sectionMenuToggle = document.querySelector('.section-menu-toggle'),
-        navActions = document.querySelector('.nav-actions'),
-        navOverlay = document.querySelector('#nav-overlay'),
         navAnchors = [...document.querySelectorAll('.nav-links a[href^="#"]')],
         sections = [...document.querySelectorAll('main section[id]')];
     let ticking = false;
-    function setSectionMenu(open) {
-        const isOpen = Boolean(open);
-        navActions.classList.toggle('is-open', isOpen);
-        sectionMenuToggle.setAttribute('aria-expanded', String(isOpen));
-        if (navOverlay) {
-            navOverlay.classList.toggle('is-visible', isOpen);
-            navOverlay.setAttribute('aria-hidden', String(!isOpen));
-        }
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-        const lang = document.documentElement.lang || 'es',
-            labels = copy[lang]?.sectionMenuButton || copy.es.sectionMenuButton;
-        sectionMenuToggle.setAttribute('aria-label', isOpen ? labels[1] : labels[0]);
-        if (isOpen) {
-            const firstLink = navActions.querySelector('a[href^="#"], button:not(.nav-drawer-close)');
-            if (firstLink) setTimeout(() => firstLink.focus(), 60);
-        }
-    }
     function updateActiveSection() {
         let active = sections[0]?.id;
         const anchorLine = scrollY + innerHeight * .34;
@@ -2214,21 +1972,6 @@
     });
     addEventListener('resize', requestNavMotion, {
         passive: true
-    });
-    sectionMenuToggle.addEventListener('click', () => setSectionMenu(!navActions.classList.contains('is-open')));
-    navAnchors.forEach(link => link.addEventListener('click', () => setSectionMenu(false)));
-    const drawerClose = document.querySelector('.nav-drawer-close');
-    if (drawerClose) drawerClose.addEventListener('click', () => { setSectionMenu(false); sectionMenuToggle.focus(); });
-    if (navOverlay) navOverlay.addEventListener('click', () => setSectionMenu(false));
-    document.addEventListener('click', e => {
-        if (navActions.classList.contains('is-open') && !e.target.closest('.nav') && !e.target.closest('#nav-overlay'))
-            setSectionMenu(false)
-    });
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && navActions.classList.contains('is-open')) {
-            setSectionMenu(false);
-            sectionMenuToggle.focus();
-        }
     });
     const revealItems = [...document.querySelectorAll('.section-head,.about-copy,.about-point,.program,.image-stack,.feature,.cert,.proof,.testimonial,.cta-panel,footer')];
     revealItems.forEach((el, i) => {
