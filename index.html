@@ -1228,7 +1228,7 @@
             display: flex;
             width: 100%;
             flex-direction: column;
-            align-items: stretch;
+            align-items: center;
             gap: 12px
         }
 
@@ -1264,6 +1264,7 @@
 
         .language-switch {
             align-self: center;
+            margin-inline: auto;
             margin-top: 2px;
             width: fit-content
         }
@@ -1286,6 +1287,38 @@
 
         .cert-grid, .proof-row {
             grid-template-columns: 1fr 1fr
+        }
+    }
+
+    @media (min-width: 641px) and (max-width: 980px) {
+        .nav {
+            padding: 10px 0 14px
+        }
+
+        .nav .wrap {
+            gap: 14px
+        }
+
+        .nav-start {
+            margin-bottom: 2px
+        }
+
+        .nav-actions {
+            width: min(100%, 880px)
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(4, max-content);
+            justify-content: center;
+            gap: 12px 14px
+        }
+
+        .nav-links a,
+        .nav-links button {
+            min-height: 42px;
+            padding: 0 16px;
+            font-size: .84rem
         }
     }
 
