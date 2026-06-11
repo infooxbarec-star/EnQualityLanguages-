@@ -73,9 +73,9 @@
     .nav .wrap {
         position: relative;
         min-height: 74px;
-        display: flex;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
-        justify-content: space-between;
         gap:28px
     }
 
@@ -108,16 +108,16 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-left: auto;
-        flex-wrap: wrap;
-        justify-content: flex-end
+        min-width: 0;
+        justify-content: center
     }
 
     .nav-links {
         display: flex;
         align-items: center;
         gap: 8px;
-        justify-content: flex-end;
+        justify-content: center;
+        flex-wrap: wrap;
         font-size: .94rem;
         font-weight: 800;
         color:#30445e
@@ -192,6 +192,32 @@
         border: 1px solid rgba(11, 43, 76, .14);
         border-radius: 10px;
         background:#f4f7fb
+    }
+
+    @media (min-width: 981px) {
+        .nav .wrap {
+            min-height: 92px;
+            gap: 22px
+        }
+
+        .nav-actions {
+            justify-self: center;
+            padding: 10px 18px;
+            border: 1px solid rgba(217, 226, 236, .9);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .78);
+            box-shadow: 0 18px 42px rgba(12, 38, 70, .08);
+            backdrop-filter: blur(20px)
+        }
+
+        .nav-links {
+            flex-wrap: nowrap
+        }
+
+        .language-switch {
+            justify-self: end;
+            box-shadow: 0 14px 30px rgba(12, 38, 70, .08)
+        }
     }
 
     .language-switch button {
@@ -1186,6 +1212,7 @@
 
         .nav .wrap {
             min-height: auto;
+            display: flex;
             padding: 10px 0;
             flex-wrap: wrap;
             gap: 10px
@@ -1202,7 +1229,6 @@
             width: 100%;
             flex-direction: column;
             align-items: stretch;
-            margin-left: 0;
             gap: 12px
         }
 
@@ -1366,10 +1392,10 @@
                         <a href="#contacto" class="btn btn-secondary">Contacto</a>
                         <button class="btn btn-primary demo-options-trigger" type="button">Clase demo gratis</button>
                     </div>
-                    <div class="language-switch" aria-label="Seleccionar idioma">
-                        <button type="button" data-lang="es" aria-pressed="true">ES</button>
-                        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-                    </div>
+                </div>
+                <div class="language-switch" aria-label="Seleccionar idioma">
+                    <button type="button" data-lang="es" aria-pressed="true">ES</button>
+                    <button type="button" data-lang="en" aria-pressed="false">EN</button>
                 </div>
             </div>
         </nav>
