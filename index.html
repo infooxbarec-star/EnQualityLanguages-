@@ -7,7 +7,7 @@
     <meta name="description" content="Academia de inglés en Quito con programas personalizados, certificaciones, preparación para exámenes, cursos empresariales y clases one-to-one."/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"/>
     <style>
     :root {
         --ink: #101828;
@@ -17,7 +17,7 @@
         --soft: #f5f8fc;
         --navy: #0b2b4c;
         --blue: #1268d6;
-        --green: #21a67a;
+        --green: #1268d6;
         --gold: #f6b73c;
         --red: #ef4b4b;
         --shadow: 0 22px 60px rgba(12, 38, 70, .14);
@@ -35,7 +35,7 @@
 
     body {
         margin: 0;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         color: var(--ink);
         background: var(--paper);
         line-height:1.5
@@ -915,6 +915,33 @@
         box-shadow:0 24px 48px rgba(11, 43, 76, .28)
     }
 
+    .back-to-top {
+        position: fixed;
+        right: 22px;
+        bottom: 88px;
+        z-index: 39;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 42px;
+        padding: 0 14px;
+        border: 1px solid rgba(11, 43, 76, .14);
+        border-radius: 7px;
+        background: rgba(255, 255, 255, .94);
+        color: var(--navy);
+        box-shadow: 0 12px 28px rgba(11, 43, 76, .14);
+        font-size: .84rem;
+        font-weight: 800;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity .2s ease, transform .2s ease, background .2s ease;
+    }
+
+    .back-to-top::before { content: "↑"; font-size: 1rem; }
+    .back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: #fff; transform: translateY(-2px); }
+
     .whatsapp-float:before {
         content: "WA";
         display: grid;
@@ -1416,6 +1443,83 @@
             transform: none
         }
     }
+
+    /* Refined academy identity */
+    body { background:#f7f8fa; }
+    h1,h2,h3,.brand-name { font-family:Manrope, sans-serif; }
+    .nav .wrap { min-height:76px; }
+    .brand { width:auto; align-items:center; gap:10px; }
+    .brand-mark { display:grid; place-items:center; width:39px; height:39px; border-radius:11px; background:var(--navy); color:#fff; font-family:Manrope,sans-serif; font-size:.78rem; font-weight:800; letter-spacing:-.08em; }
+    .brand-text { width:auto; font-family:Manrope,sans-serif; font-size:1.03rem; letter-spacing:-.045em; }
+    .brand-text small { display:block; margin-top:3px; color:var(--blue); font-family:"DM Sans",sans-serif; font-size:.61rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+    .nav-actions { border:0; box-shadow:none; background:transparent; padding:0; }
+    .nav-links { gap:2px; }
+    .nav-links a:not(.btn) { padding:9px 9px; font-size:.82rem; }
+    .nav-links .btn { min-height:42px; border-radius:7px; }
+    .btn { border-radius:7px; font-size:.92rem; }
+    .btn-primary { box-shadow:0 10px 24px rgba(206,54,61,.2); }
+    .btn-primary, .nav-links .btn-primary { background:#c9363d; }
+    .btn-primary { animation:none; }
+    .hero { min-height:670px; background:linear-gradient(90deg,rgba(6,25,45,.96) 0%,rgba(6,25,45,.88) 38%,rgba(6,25,45,.34) 69%,rgba(6,25,45,.12)),url('assets/uio-hero-quito-classroom-v2.png') center/cover no-repeat; }
+    .hero:before { display:none; }
+    .hero .wrap { padding:94px 0 86px; grid-template-columns:minmax(0,650px) minmax(290px,360px); align-items:center; }
+    .eyebrow { border-radius:5px; padding:7px 10px; background:rgba(127,185,241,.14); border-color:rgba(166,208,244,.32); color:#d8edff; font-size:.73rem; letter-spacing:.04em; }
+    h1 { font-size:clamp(3rem,6vw,5.35rem); letter-spacing:-.065em; line-height:.98; }
+    .hero-copy { max-width:570px; font-size:1.1rem; line-height:1.65; }
+    .hero-card { align-self:end; padding:25px; border:1px solid rgba(255,255,255,.32); border-radius:14px; background:rgba(248,251,255,.88); box-shadow:0 24px 70px rgba(4,17,31,.34); backdrop-filter:blur(18px); }
+    .hero-card img { display:none; }
+    .hero-card h3 { font-size:1.35rem; letter-spacing:-.04em; }
+    .hero-card .demo-steps { display:grid; gap:12px; margin:18px 0 22px; }
+    .demo-step { display:grid; grid-template-columns:27px 1fr; gap:10px; align-items:center; color:#41536a; font-size:.86rem; font-weight:600; }
+    .demo-step b { display:grid; place-items:center; width:27px; height:27px; border-radius:50%; background:#e5f0fb; color:var(--blue); font-size:.72rem; }
+    .hero-scroll-cue { display:none; }
+    .hero-stats { gap:0; max-width:530px; border-top:1px solid rgba(255,255,255,.22); }
+    .stat { padding:16px 16px 0 0; border:0; border-radius:0; background:transparent; backdrop-filter:none; }
+    .stat + .stat { padding-left:16px; border-left:1px solid rgba(255,255,255,.22); }
+    section { padding:112px 0; }
+    .section-head { margin-bottom:46px; }
+    .about-point,.program,.testimonial { border:0; box-shadow:0 12px 35px rgba(13,37,65,.06); }
+    .about-point { border-radius:12px; background:#fff; }
+    .about-point span { background:var(--navy); color:#fff; }
+    .program-grid { grid-template-columns:repeat(4,1fr); gap:18px; }
+    .program { min-height:0; border-radius:12px; background:#fff; }
+    .program-media { aspect-ratio:5/4; background:var(--navy); }
+    .program-media img { display:none; }
+    .program-media:after { content:attr(data-label); display:grid; place-items:end start; height:100%; padding:18px; background:linear-gradient(160deg,rgba(40,117,192,.28),rgba(7,30,54,.88)),url('assets/uio-hero-quito-classroom-v2.png') center/cover; color:#fff; font-family:Manrope,sans-serif; font-size:1.2rem; font-weight:700; letter-spacing:-.04em; }
+    .program:nth-child(2) .program-media:after { background-position:72% center; }
+    .program:nth-child(3) .program-media:after { background-position:93% center; }
+    .program:nth-child(4) .program-media:after { background-position:48% center; }
+    .program-content { padding:17px 18px 21px; }
+    .program-content h3 { margin-bottom:7px; font-size:1.1rem; }
+    .program-content p { font-size:.87rem; line-height:1.55; }
+    .program-tag { display:block; margin-bottom:7px; color:var(--blue); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+    .program:nth-child(n+5) { display:none; }
+    .certifications { background:var(--navy); }
+    .cert-grid { grid-template-columns:repeat(3,1fr); }
+    .cert { border-radius:12px; }
+    .level-path { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:42px 0 24px; padding:22px 0; border-block:1px solid rgba(255,255,255,.18); }
+    .level-path span { display:grid; place-items:center; width:52px; height:52px; border:1px solid rgba(255,255,255,.28); border-radius:50%; color:#dcecff; font-family:Manrope,sans-serif; font-size:.83rem; font-weight:700; }
+    .level-path span:nth-child(5),.level-path span:nth-child(7),.level-path span:nth-child(9) { color:var(--gold); border-color:rgba(246,183,60,.6); }
+    .level-path i { flex:1; height:1px; background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(246,183,60,.7)); }
+    .proof-row { grid-template-columns:repeat(4,1fr); }
+    .proof { border:0; border-radius:7px; background:rgba(255,255,255,.95); }
+    .testimonials { background:#f7f8fa; }
+    .testimonial-grid { grid-template-columns:repeat(3,1fr); }
+    .testimonial { min-height:248px; padding:25px; border-radius:12px; }
+    .testimonial:nth-child(4) { display:none; }
+    .avatar img { display:none; }
+    .avatar:before { content:attr(data-initials); display:grid; place-items:center; width:46px; height:46px; border-radius:12px; background:#e4edf7; color:var(--navy); font-family:Manrope,sans-serif; font-size:.8rem; font-weight:800; }
+    .stars { background:#fff3d4; color:#a96c00; }
+    .cta-panel { border-radius:16px; background:linear-gradient(120deg,#0b2b4c,#123f6d); }
+    footer { padding:64px 0 32px; background:#081f37; color:#d3e0ed; }
+    footer h3,footer p { color:#fff; }
+    .footer-grid { display:grid; grid-template-columns:1.2fr .8fr .8fr; gap:36px; max-width:none; }
+    .footer-grid a { display:block; margin:8px 0; color:#bed0e1; font-size:.91rem; }
+    .footer-label { margin:0 0 12px; color:#84b9e7; font-size:.73rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .copyright { color:#91a9bd; border-color:rgba(255,255,255,.14); }
+    .image-stack.is-visible .image-main,.image-stack.is-visible .image-small,.program:hover .icon,.about-point:hover span,.feature:hover .check { animation:none; }
+    @media(max-width:980px){ .nav .wrap{min-height:70px}.nav-start{justify-content:flex-start}.nav-actions{display:block;order:3;width:100%}.nav-links{width:100%;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding-bottom:3px}.nav-links a:not(.btn),.nav-links .btn{flex:0 0 auto}.language-switch{margin-left:auto}.hero .wrap{grid-template-columns:1fr}.hero-card{justify-self:start;max-width:390px}.program-grid,.testimonial-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.hero{min-height:auto} }
+    @media(max-width:640px){ .hero{background:linear-gradient(180deg,rgba(6,25,45,.92),rgba(6,25,45,.64)),url('assets/uio-hero-quito-classroom-v2.png') 68% center/cover}.hero .wrap{padding:72px 0}.hero-card{display:block}.hero-stats{grid-template-columns:1fr 1fr}.stat:last-child{display:none}.program-grid,.testimonial-grid{grid-template-columns:1fr}.program:nth-child(n+5){display:none}.level-path{gap:4px}.level-path span{width:38px;height:38px;font-size:.67rem}.footer-grid{grid-template-columns:1fr}.brand-text{font-size:.92rem}.language-switch{display:none} }
     </style>
 </head>
 <body>
@@ -1424,19 +1528,18 @@
         <nav class="nav" aria-label="Navegación principal">
             <div class="wrap">
                 <div class="nav-start">
-                    <a class="brand" href="#inicio" aria-label="uioenglishacademy.org">
-                        <span class="brand-text">uioenglishacademy.org</span>
+                    <a class="brand" href="#inicio" aria-label="UIO English Academy">
+                        <span class="brand-mark">UIO</span>
+                        <span class="brand-text">UIO English Academy<small>Quito · Ecuador</small></span>
                     </a>
                 </div>
                 <div class="nav-actions" id="primary-navigation">
                     <div class="nav-links">
                         <a href="#inicio">Inicio</a>
-                        <a href="#quienes-somos">Quiénes somos</a>
                         <a href="#programas">Programas</a>
                         <a href="#metodologia">Metodología</a>
                         <a href="#certificaciones">Certificaciones</a>
-                        <a href="#testimonios">Testimonios</a>
-                        <a href="#contacto" class="btn btn-secondary">Contacto</a>
+                        <a href="#contacto">Contacto</a>
                         <button class="btn btn-primary demo-options-trigger" type="button">Clase demo gratis</button>
                     </div>
                 </div>
@@ -1452,7 +1555,7 @@
             <div class="wrap">
                 <div>
                     <span class="eyebrow">Academia de inglés en Quito · 23 años de experiencia</span>
-                    <h1>Domina inglés con una ruta clara.</h1>
+                    <h1>Aprende inglés en Quito con una ruta clara.</h1>
                     <p class="hero-copy">uioenglishacademy.org prepara estudiantes, profesionales y empresas con programas de inglés personalizados, docentes calificados, certificaciones por nivel y clases enfocadas en comunicación real.</p>
                     <div class="hero-actions">
                         <button class="btn btn-primary demo-options-trigger" type="button">Agendar clase demo</button>
@@ -1474,9 +1577,13 @@
                     </div>
                 </div>
                 <aside class="hero-card">
-                    <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=82" alt="Estudiantes en clase de inglés"/>
                     <h3>Empieza con una clase demostrativa gratuita</h3>
-                    <p>Conoce tu nivel, define tus objetivos y recibe una recomendación de programa antes de inscribirte.</p>
+                    <p>En una primera sesión definimos el punto de partida y tu meta.</p>
+                    <div class="demo-steps">
+                        <span class="demo-step"><b>1</b>Clase demo gratuita</span>
+                        <span class="demo-step"><b>2</b>Evaluación de nivel</span>
+                        <span class="demo-step"><b>3</b>Plan recomendado</span>
+                    </div>
                     <button class="btn btn-primary demo-options-trigger" type="button">Reservar cupo</button>
                 </aside>
             </div>
@@ -1498,21 +1605,21 @@
                     </div>
                     <div class="about-points">
                         <article class="about-point">
-                            <span aria-hidden="true">→</span>
+                            <span aria-hidden="true">01</span>
                             <div>
                                 <h3>Ruta personalizada</h3>
                                 <p>Partimos de tu nivel y de tus metas para recomendar el programa correcto.</p>
                             </div>
                         </article>
                         <article class="about-point">
-                            <span aria-hidden="true">→</span>
+                            <span aria-hidden="true">02</span>
                             <div>
                                 <h3>Aprendizaje práctico</h3>
                                 <p>Conversación, escucha y situaciones reales desde el inicio del proceso.</p>
                             </div>
                         </article>
                         <article class="about-point">
-                            <span aria-hidden="true">→</span>
+                            <span aria-hidden="true">03</span>
                             <div>
                                 <h3>Confianza y certificación</h3>
                                 <p>Avanzas con objetivos claros y evidencia visible de tu progreso.</p>
@@ -1533,37 +1640,37 @@
                 </div>
                 <div class="program-grid">
                     <article class="program">
-                        <div class="program-media">
+                        <div class="program-media" data-label="Regular">
                             <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_53_21%20AM.png" alt="Programa de inglés regular"/>
                         </div>
-                        <div class="program-content">
+                        <div class="program-content"><span class="program-tag">Para adultos</span>
                             <h3>Regulares</h3>
                             <p>Aprendizaje progresivo para construir vocabulario, gramática, escucha y conversación desde tu nivel actual.</p>
                         </div>
                     </article>
                     <article class="program">
-                        <div class="program-media">
+                        <div class="program-media" data-label="Preparación">
                             <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_53_45%20AM.png" alt="Programa de preparación en inglés"/>
                         </div>
-                        <div class="program-content">
+                        <div class="program-content"><span class="program-tag">Exámenes y metas</span>
                             <h3>Preparaciones</h3>
                             <p>Entrenamiento orientado a exámenes, entrevistas, viajes, universidad o metas profesionales específicas.</p>
                         </div>
                     </article>
                     <article class="program">
-                        <div class="program-media">
+                        <div class="program-media" data-label="Certificación">
                             <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_53_59%20AM.png" alt="Programa de certificaciones de inglés"/>
                         </div>
-                        <div class="program-content">
+                        <div class="program-content"><span class="program-tag">MCER</span>
                             <h3>Certificaciones</h3>
                             <p>Ruta por niveles MCER para validar tus competencias y demostrar tu progreso con claridad.</p>
                         </div>
                     </article>
                     <article class="program">
-                        <div class="program-media">
+                        <div class="program-media" data-label="Empresas">
                             <img src="https://raw.githubusercontent.com/infooxbarec-star/EnQualityLanguages-/refs/heads/main/ChatGPT%20Image%20Jun%209%2C%202026%20at%2011_56_37%20AM.png" alt="Programa de inglés para empresas"/>
                         </div>
-                        <div class="program-content">
+                        <div class="program-content"><span class="program-tag">Para equipos</span>
                             <h3>Empresas</h3>
                             <p>Capacitación para equipos con enfoque laboral, reuniones, presentaciones, servicio al cliente y comunicación interna.</p>
                         </div>
@@ -1669,6 +1776,9 @@
                         <p>Perfecciona precisión, naturalidad y desempeño para metas académicas o profesionales exigentes.</p>
                     </article>
                 </div>
+                <div class="level-path" aria-label="Ruta de niveles MCER: A1, A2, B1, B2 y C1">
+                    <span>A1</span><i></i><span>A2</span><i></i><span>B1</span><i></i><span>B2</span><i></i><span>C1</span>
+                </div>
                 <div class="proof-row" aria-label="Enfoques de certificación">
                     <div class="proof">MCER</div>
                     <div class="proof">Preparación de exámenes</div>
@@ -1688,8 +1798,7 @@
                 </div>
                 <div class="testimonial-grid">
                     <article class="testimonial">
-                        <div class="avatar">
-                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80" alt="Carlos Garrido"/>
+                        <div class="avatar" data-initials="CG">
                             <div>
                                 <strong>Carlos Garrido</strong>
                                 <span>Estudiante</span>
@@ -1699,8 +1808,7 @@
                         <div class="stars">★★★★★</div>
                     </article>
                     <article class="testimonial">
-                        <div class="avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="María González"/>
+                        <div class="avatar" data-initials="MG">
                             <div>
                                 <strong>María González</strong>
                                 <span>Estudiante</span>
@@ -1710,8 +1818,7 @@
                         <div class="stars">★★★★★</div>
                     </article>
                     <article class="testimonial">
-                        <div class="avatar">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="José Castillo"/>
+                        <div class="avatar" data-initials="JC">
                             <div>
                                 <strong>José Castillo</strong>
                                 <span>Estudiante</span>
@@ -1721,8 +1828,7 @@
                         <div class="stars">★★★★★</div>
                     </article>
                     <article class="testimonial">
-                        <div class="avatar">
-                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=200&q=80" alt="Edison Chiluisa"/>
+                        <div class="avatar" data-initials="EC">
                             <div>
                                 <strong>Edison Chiluisa</strong>
                                 <span>Estudiante</span>
@@ -1739,8 +1845,8 @@
                 <div class="cta-panel">
                     <div class="cta-copy">
                         <span class="label">Clase demostrativa gratis</span>
-                        <h2>Agenda a las 10 o en el horario que prefieras.</h2>
-                        <p>Recibe una orientación rápida, conoce el nivel recomendado y pregunta por promociones vigentes para iniciar tu curso de inglés en Quito.</p>
+                        <h2>Agenda tu clase demo gratuita.</h2>
+                        <p>Conoce tu nivel y recibe una ruta recomendada para estudiar, trabajar o certificarte.</p>
                         <div class="hero-actions">
                             <a class="btn btn-primary" href="https://wa.me/59399194065?text=Hola%21%20Necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20su%20academia." target="_blank" rel="noreferrer">Escribir por WhatsApp</a>
                             <a class="btn btn-secondary" href="mailto:enqualitylanguages@gmail.com">Enviar correo</a>
@@ -1774,6 +1880,7 @@
         </section>
     </main>
     <a class="whatsapp-float" href="https://wa.me/59399194065?text=Hola%21%20Necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20su%20academia." target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp">WhatsApp</a>
+    <a class="back-to-top" href="#inicio" aria-label="Volver al inicio">Inicio</a>
     <div class="demo-options" id="demo-options" role="dialog" aria-modal="true" aria-labelledby="demo-options-title" hidden>
         <div class="demo-options-panel">
             <div class="demo-options-head">
@@ -1793,8 +1900,20 @@
         <div class="wrap">
             <div class="footer-grid">
                 <div>
-                    <h3>uioenglishacademy.org</h3>
+                    <h3>UIO English Academy</h3>
                     <p>Instituto de idiomas en Quito con programas de inglés para estudiantes, profesionales y empresas.</p>
+                </div>
+                <div>
+                    <p class="footer-label">Contacto</p>
+                    <a href="https://wa.me/59399194065" target="_blank" rel="noreferrer">WhatsApp · 099 194 065</a>
+                    <a href="mailto:enqualitylanguages@gmail.com">enqualitylanguages@gmail.com</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Av.%20Gaspar%20de%20Villarroel%20y%20Paris%20Quito%20Ecuador" target="_blank" rel="noreferrer">Av. Gaspar de Villarroel y París · 4to piso</a>
+                </div>
+                <div>
+                    <p class="footer-label">Programas</p>
+                    <a href="#programas">Inglés regular</a>
+                    <a href="#programas">Preparación y exámenes</a>
+                    <a href="#programas">Inglés para empresas</a>
                 </div>
             </div>
             <div class="copyright">uioenglishacademy.org © 2026 · Rediseño conceptual para una presencia web moderna.</div>
@@ -1808,15 +1927,15 @@
             title: "uioenglishacademy.org | Academia de Inglés en Quito",
             description: "Academia de inglés en Quito con programas personalizados, certificaciones, preparación para exámenes, cursos empresariales y clases one-to-one.",
             whatsappMessage: "Hola! Necesito más información sobre su academia.",
-            nav: ["Inicio", "Quiénes somos", "Programas", "Metodología", "Certificaciones", "Testimonios", "Contacto", "Clase demo gratis"],
+            nav: ["Inicio", "Programas", "Metodología", "Certificaciones", "Contacto", "Clase demo gratis"],
             sectionMenuButton: ["Abrir navegación", "Cerrar navegación"],
             heroEyebrow: "Academia de inglés en Quito · 23 años de experiencia",
-            heroTitle: "Domina inglés con una ruta clara.",
+            heroTitle: "Aprende inglés en Quito con una ruta clara.",
             heroCopy: "uioenglishacademy.org prepara estudiantes, profesionales y empresas con programas de inglés personalizados, docentes calificados, certificaciones por nivel y clases enfocadas en comunicación real.",
             heroButtons: ["Agendar clase demo", "Ver programas"],
             stats: ["años formando estudiantes", "rutas con certificación", "programas para cada meta"],
             cardTitle: "Empieza con una clase demostrativa gratuita",
-            cardCopy: "Conoce tu nivel, define tus objetivos y recibe una recomendación de programa antes de inscribirte.",
+            cardCopy: "En una primera sesión definimos el punto de partida y tu meta.",
             cardButton: "Reservar cupo",
             aboutLabel: "Quiénes somos",
             aboutTitle: "Una academia cercana, seria y enfocada en resultados reales.",
@@ -1837,8 +1956,8 @@
             testimonialsCopy: "Historias enfocadas en lo que realmente importa: confianza, fluidez, profesores cercanos y programas adaptados.",
             student: "Estudiante",
             ctaLabel: "Clase demostrativa gratis",
-            ctaTitle: "Agenda a las 10 o en el horario que prefieras.",
-            ctaCopy: "Recibe una orientación rápida, conoce el nivel recomendado y pregunta por promociones vigentes para iniciar tu curso de inglés en Quito.",
+            ctaTitle: "Agenda tu clase demo gratuita.",
+            ctaCopy: "Conoce tu nivel y recibe una ruta recomendada para estudiar, trabajar o certificarte.",
             ctaButtons: ["Escribir por WhatsApp", "Enviar correo"],
             demoOptions: ["Agenda tu clase demo", "Elige cómo quieres contactarnos y te ayudamos a reservar tu cupo.", "Escribir por WhatsApp", "Escribir al correo", "Cerrar opciones", "Clase demo gratis", "Clase demo gratis", "Hola, necesito más información sobre su academia."],
             location: ["Visítanos", "Estamos en el norte de Quito.", "Agenda una clase demo o acércate a conocer la academia, los horarios y la ruta recomendada para tu nivel.", "Av. Gaspar de Villarroel y París, esquina, 4to Piso.", "Abrir en Google Maps", "Mapa de uioenglishacademy.org en Quito"],
@@ -1857,10 +1976,10 @@
             title: "uioenglishacademy.org | English Academy in Quito",
             description: "English academy in Quito with personalized programs, certifications, exam preparation, corporate training, and one-to-one classes.",
             whatsappMessage: "Hi! I need more information about your academy.",
-            nav: ["Home", "Who we are", "Programs", "Method", "Certifications", "Testimonials", "Contact", "Free demo class"],
+            nav: ["Home", "Programs", "Method", "Certifications", "Contact", "Free demo class"],
             sectionMenuButton: ["Open navigation", "Close navigation"],
             heroEyebrow: "English academy in Quito · 23 years of experience",
-            heroTitle: "Master English with a clear path.",
+            heroTitle: "Learn English in Quito with a clear path.",
             heroCopy: "uioenglishacademy.org prepares students, professionals, and companies with personalized English programs, qualified teachers, level certifications, and classes focused on real communication.",
             heroButtons: ["Book a demo class", "View programs"],
             stats: ["years training students", "certification pathways", "programs for every goal"],
@@ -1886,8 +2005,8 @@
             testimonialsCopy: "Stories focused on what truly matters: confidence, fluency, supportive teachers, and adapted programs.",
             student: "Student",
             ctaLabel: "Free demo class",
-            ctaTitle: "Book at 10 or at the time that works best for you.",
-            ctaCopy: "Receive quick guidance, learn the recommended level, and ask about current promotions to start your English course in Quito.",
+            ctaTitle: "Book your free demo class.",
+            ctaCopy: "Discover your level and receive a recommended path for study, work, or certification.",
             ctaButtons: ["Write on WhatsApp", "Send email"],
             demoOptions: ["Book your demo class", "Choose how you want to contact us and we will help you reserve your spot.", "Write on WhatsApp", "Write by email", "Close options", "Free demo class", "Free demo class", "Hi, I need more information about your academy."],
             location: ["Visit us", "We are in northern Quito.", "Book a demo class or visit us to learn about the academy, schedules, and the recommended path for your level.", "Av. Gaspar de Villarroel and París, corner, 4th Floor.", "Open in Google Maps", "Map of uioenglishacademy.org in Quito"],
@@ -2012,6 +2131,7 @@
     });
     document.querySelectorAll('.language-switch button').forEach(b => b.addEventListener('click', () => applyLanguage(b.dataset.lang)));
     const nav = document.querySelector('.nav'),
+        backToTop = document.querySelector('.back-to-top'),
         progress = document.querySelector('.scroll-progress'),
         navAnchors = [...document.querySelectorAll('.nav-links a[href^="#"]')],
         sections = [...document.querySelectorAll('main section[id]')];
@@ -2030,6 +2150,7 @@
             max = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
         nav.classList.toggle('nav-raised', y > 8);
         progress.style.transform = `scaleX(${Math.min(y / max, 1)})`;
+        backToTop.classList.toggle('is-visible', y > 420);
         document.body.classList.toggle('mobile-whatsapp-visible', innerWidth > 640 || y > 760);
         updateActiveSection();
         ticking = false
